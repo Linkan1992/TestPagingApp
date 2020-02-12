@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+                name="viewModel"
+                type="a740362.linkan.testpagingapp.ui.activity.main.MainViewModel"/>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                       xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                       xmlns:bind="http://schemas.android.com/apk/res-auto"
+                                                       xmlns:tools="http://schemas.android.com/tools"
+                                                       android:layout_width="match_parent"
+                                                       android:layout_height="match_parent"
+                                                       tools:context=".ui.activity.main.MainActivity"
+                                                       android:id="@+id/cl_root">
+
+        <!--app bar layout-->
+        <include
+                android:id="@+id/included_app_bar"
+                layout="@layout/app_bar_layout"
+                bind:viewModel="@{(a740362.linkan.testpagingapp.base.BaseViewModel) viewModel}"/>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/recycler_area"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/included_app_bar">
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                    android:id="@+id/pullToRefresh"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:enableRefreshing="@{ viewModel.refreshLoading }"
+                    app:pullToRefresh="@{ viewModel.pullToRefreshListener }">
+
+                <!--Repo Item recylerview layout-->
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/user_recyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="parent"
+                        tools:listItem="@layout/trending_email_layout"
+                        app:hasMoreData="@{ viewModel.moreData }"
+                        app:isRefreshing="@{ viewModel.refreshLoading }"
+                        app:userAdapter="@{ viewModel.mUserObservableList }"/>
+
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <!-- Adding progress layout -->
+        <include
+                android:id="@+id/included_base_progress_loader"
+                layout="@layout/base_progress_loader"
+                bind:viewModel="@{(a740362.linkan.testpagingapp.base.BaseViewModel) viewModel}"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

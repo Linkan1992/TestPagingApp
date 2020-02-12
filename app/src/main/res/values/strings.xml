@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TestPagingApp</string>
+
+    <string name="empty"></string>
+    <string name="trending">Trending Users</string>
+    <!--empty state-->
+    <string name="empty_screen">Something went wrong..</string>
+    <string name="error_reason">An alien is probably blocking your signal</string>
+    <string name="retry">Retry</string>
+</resources>

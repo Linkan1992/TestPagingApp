@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+                name="viewModel"
+                type="a740362.linkan.testpagingapp.ui.adapter.trending.TrendingUserViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                       xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                       xmlns:fresco="http://schemas.android.com/apk/res-auto"
+                                                       xmlns:tools="http://schemas.android.com/tools"
+                                                       android:id="@+id/cl_root"
+                                                       android:layout_width="match_parent"
+                                                       android:layout_height="wrap_content"
+                                                       android:foreground="?selectableItemBackground">
+
+
+        <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/margin_16dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="@dimen/margin_16dp" />
+
+        <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/img_avatar"
+                style="@style/TextStyle.Avatar"
+                android:layout_width="@dimen/layout_32dp"
+                android:layout_height="@dimen/layout_32dp"
+                android:scaleType="fitCenter"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toTopOf="parent"
+                fresco:failureImage="@drawable/nointernet_connection"
+                fresco:placeholderImage="@drawable/nointernet_connection"
+                fresco:roundAsCircle="true"
+                app:imageUrl="@{ viewModel.avatar }"/>
+
+
+        <TextView
+                android:id="@+id/tv_user"
+                style="@style/TextStyle.RegularSize"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{ viewModel.fullName }"
+                app:layout_constraintStart_toEndOf="@id/img_avatar"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                tools:text="ChauhanLinkan"/>
+
+        <TextView
+                android:id="@+id/tv_user_email"
+                style="@style/TextStyle.MediumSize"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{ viewModel.emailAddress }"
+                app:layout_constraintStart_toStartOf="@id/tv_user"
+                app:layout_constraintTop_toBottomOf="@id/tv_user"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                tools:text="Linkan Chauhan sfsfsfsfsfsffsfsfsfsfsdfdfdfasfadsfdfdfsadfdffsfsfsfsfsfsfsfsfsf" />
+
+        <TextView
+                android:id="@+id/grey_seperator"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:background="@color/lightGrey"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_user_email" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

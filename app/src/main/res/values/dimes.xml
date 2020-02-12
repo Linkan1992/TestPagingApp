@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="toolbar_height">56dp</dimen>
+    <dimen name="margin_16dp">16dp</dimen>
+    <dimen name="layout_measure">24dp</dimen>
+    <dimen name="margin_8dp">8dp</dimen>
+    <dimen name="margin_4dp">4dp</dimen>
+    <dimen name="margin_6dp">6dp</dimen>
+    <dimen name="thickness_1dp">1dp</dimen>
+    <dimen name="min_width_328dp">328dp</dimen>
+    <dimen name="layout_32dp">32dp</dimen>
+    <dimen name="dimes_60dp">60dp</dimen>
+
+</resources>
